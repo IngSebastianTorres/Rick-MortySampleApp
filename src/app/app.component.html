@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Lista de personajes</h1>
+  <h3>Páginas: {{numPages}}</h3>
+  <h3>Número de página: {{currentPage}}</h3>
+<div class="botones">
+  <button class="btn btn-primary"  (click)="changePage(false)" [disabled]="currentPage===1">Anterior</button>
+  <button class="btn btn-primary ml-3"(click)="changePage(true)"  [disabled]="currentPage===numPages">Siguiente</button>
+
+</div>
+
+ <div class="row">
+  <div class="col-6 col-md-3" *ngFor="let personaje of personajes">
+      <div class="personaje" [ngClass]="{vivo: (personaje.status === 'Alive'), muerto:(personaje.status==='Dead')}" >  <!--Validacion contra el API si el personaje esta vivo-->
+          <h3>{{personaje.name}}</h3>
+          <img [src]="personaje.image" alt="">
+          <p>{{personaje.species}}</p>
+      </div>
+  </div>
+</div>
+</div>
+
